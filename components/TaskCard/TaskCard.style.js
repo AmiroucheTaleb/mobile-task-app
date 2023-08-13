@@ -15,13 +15,16 @@ export const S = StyleSheet.create({
       width: 0,
       height: 5,
     },
-    shadowOpacity: 0.2,
+    shadowOpacity: 0.5,
     shadowRadius: 5.62,
-    elevation: 12,
+    elevation: 6,
   },
   text: {
-    fontSize: 22,
-    textDecorationLine: "line-through",
+    fontSize: 18,
   },
   img: { height: 24, width: 24 },
+  imgDisplay: { display: "none" },
+  textChecked: {
+    textDecorationLine: "line-through",
+  },
 });
