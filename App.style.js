@@ -11,6 +11,7 @@ export const s = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     backgroundColor: "white",
+    paddingHorizontal: 15,
   },
   body: {
     flex: 5,
@@ -18,8 +19,16 @@ export const s = StyleSheet.create({
     backgroundColor: "#FAFAFA",
   },
   footer: {
-    backgroundColor: "white",
+    backgroundColor: "black",
     height: 70,
+    shadowColor: "#000000",
+    shadowOffset: {
+      width: 0,
+      height: 15,
+    },
+    shadowOpacity: 0.5,
+    shadowRadius: 5.62,
+    elevation: 12,
   },
   item: {
     marginHorizontal: 12,

@@ -4,6 +4,7 @@ import { s } from "./App.style";
 import Header from "./components/Header/Header";
 import TaskCard from "./components/TaskCard/TaskCard";
 import { useState } from "react";
+import Tab from "./components/Tab/Tab";
 
 const TODO_LIST = [
   { id: 1, title: "aller faire les courses", isCompleted: false },
@@ -20,9 +21,20 @@ const TODO_LIST = [
 
 export default function App() {
   const [todoList, setTodoList] = useState(TODO_LIST);
+  const [activeTab, setActiveTab] = useState("all");
 
   function updateTodoList(todo) {
-    todoList.find((element) => element.id === todo.id);
+    const updatedTodo = {
+      ...todo,
+      isCompleted: !todo.isCompleted,
+    };
+
+    const indexToUpdate = todoList.findIndex((todo) => todo.id === updatedTodo.id);
+
+    const updatedTodoList = [...todoList];
+
+    updatedTodoList[indexToUpdate] = updatedTodo;
+    setTodoList(updatedTodoList);
   }
 
   function renderTodoList() {
@@ -45,7 +57,7 @@ export default function App() {
         </SafeAreaView>
       </SafeAreaProvider>
       <View style={s.footer}>
-        <Text>footer</Text>
+        <Tab currentTab={activeTab} />
       </View>
     </>
   );
