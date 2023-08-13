@@ -21,7 +21,11 @@ const TODO_LIST = [
 
 export default function App() {
   const [todoList, setTodoList] = useState(TODO_LIST);
-  const [activeTab, setActiveTab] = useState("all");
+  const [activeTab, setActiveTab] = useState("inProgress");
+
+  function changeActiveTab(selectedTab) {
+    setActiveTab(selectedTab);
+  }
 
   function updateTodoList(todo) {
     const updatedTodo = {
@@ -57,7 +61,7 @@ export default function App() {
         </SafeAreaView>
       </SafeAreaProvider>
       <View style={s.footer}>
-        <Tab currentTab={activeTab} />
+        <Tab currentTab={activeTab} changeActiveTab={changeActiveTab} />
       </View>
     </>
   );

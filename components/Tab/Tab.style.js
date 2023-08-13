@@ -11,5 +11,8 @@ export const s = StyleSheet.create({
     borderBottomRightRadius: 20,
   },
   active: { color: "#0084ff" },
-  text: { fontSize: 18 },
+  text: {
+    fontSize: 18,
+    fontWeight: "bold",
+  },
 });

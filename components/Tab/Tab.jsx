@@ -2,17 +2,17 @@ import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
 import { s } from "./Tab.style";
 
-const Tab = (currentTab) => {
+const Tab = ({ currentTab, changeActiveTab }) => {
   return (
     <View style={s.container}>
-      <TouchableOpacity>
-        <Text style={[s.text, s.active]}>All (4)</Text>
+      <TouchableOpacity onPress={() => changeActiveTab("all")}>
+        <Text style={[s.text, currentTab === "all" && s.active]}>All (4)</Text>
       </TouchableOpacity>
-      <TouchableOpacity>
-        <Text style={s.text}>In progress (1)</Text>
+      <TouchableOpacity onPress={() => changeActiveTab("inProgress")}>
+        <Text style={[s.text, currentTab === "inProgress" && s.active]}>In progress (1)</Text>
       </TouchableOpacity>
-      <TouchableOpacity>
-        <Text style={s.text}>done (3)</Text>
+      <TouchableOpacity onPress={() => changeActiveTab("done")}>
+        <Text style={[s.text, currentTab === "done" && s.active]}>Done (3)</Text>
       </TouchableOpacity>
     </View>
   );
