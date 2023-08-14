@@ -27,6 +27,17 @@ export default function App() {
     setActiveTab(selectedTab);
   }
 
+  function getFiltredTodoList() {
+    switch (activeTab) {
+      case "all":
+        return todoList;
+      case "inProgress":
+        return todoList.filter((todo) => !todo.isCompleted);
+      case "done":
+        return todoList.filter((todo) => todo.isCompleted);
+    }
+  }
+
   function updateTodoList(todo) {
     const updatedTodo = {
       ...todo,
@@ -42,7 +53,7 @@ export default function App() {
   }
 
   function renderTodoList() {
-    return todoList.map((todo) => (
+    return getFiltredTodoList().map((todo) => (
       <View style={s.item} key={todo.id}>
         <TaskCard task={todo} update={updateTodoList} />
       </View>
@@ -61,7 +72,7 @@ export default function App() {
         </SafeAreaView>
       </SafeAreaProvider>
       <View style={s.footer}>
-        <Tab currentTab={activeTab} changeActiveTab={changeActiveTab} />
+        <Tab currentTab={activeTab} changeActiveTab={changeActiveTab} todoList={todoList} />
       </View>
     </>
   );

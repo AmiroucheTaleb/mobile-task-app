@@ -26,9 +26,9 @@ export const s = StyleSheet.create({
       width: 0,
       height: 15,
     },
-    shadowOpacity: 0.5,
+    shadowOpacity: 0,
     shadowRadius: 5.62,
-    elevation: 12,
+    elevation: 25,
   },
   item: {
     marginHorizontal: 12,
