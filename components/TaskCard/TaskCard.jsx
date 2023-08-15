@@ -3,10 +3,14 @@ import React from "react";
 import { S } from "./TaskCard.style";
 import check from "../../assets/check.png";
 
-const TaskCard = ({ task, update }) => {
+const TaskCard = ({ task, update, deleteTask }) => {
   return (
     <View>
-      <TouchableOpacity style={S.button} onPress={() => update(task)}>
+      <TouchableOpacity
+        style={S.button}
+        onLongPress={() => deleteTask(task)}
+        onPress={() => update(task)}
+      >
         <Text style={[S.text, task.isCompleted ? S.textChecked : ""]}>{task.title} </Text>
         <Image
           style={[S.img, !task.isCompleted ? S.imgDisplay : ""]}

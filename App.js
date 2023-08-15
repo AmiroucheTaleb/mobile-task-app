@@ -1,4 +1,4 @@
-import { ScrollView, ScrollViewBase, Text, View } from "react-native";
+import { Alert, ScrollView, Text, View } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { s } from "./App.style";
 import Header from "./components/Header/Header";
@@ -22,6 +22,24 @@ const TODO_LIST = [
 export default function App() {
   const [todoList, setTodoList] = useState(TODO_LIST);
   const [activeTab, setActiveTab] = useState("inProgress");
+
+  function deleteTodo(task) {
+    Alert.alert(
+      "Supression",
+      `tu est sur de vouloire supprimer  ? \ntu veux plus ${task.title} ?`,
+      [
+        {
+          text: "Annuler",
+          style: "cancel",
+        },
+        {
+          text: "Supprimer",
+          onPress: () => setTodoList(todoList.filter((todo) => todo.id !== task.id)),
+          style: "destructive",
+        },
+      ]
+    );
+  }
 
   function changeActiveTab(selectedTab) {
     setActiveTab(selectedTab);
@@ -55,7 +73,7 @@ export default function App() {
   function renderTodoList() {
     return getFiltredTodoList().map((todo) => (
       <View style={s.item} key={todo.id}>
-        <TaskCard task={todo} update={updateTodoList} />
+        <TaskCard task={todo} deleteTask={deleteTodo} update={updateTodoList} />
       </View>
     ));
   }
