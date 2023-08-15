@@ -34,4 +34,5 @@ export const s = StyleSheet.create({
     marginHorizontal: 12,
     marginVertical: 7,
   },
+  btnAdd: {},
 });

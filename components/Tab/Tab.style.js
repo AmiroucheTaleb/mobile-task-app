@@ -10,9 +10,12 @@ export const s = StyleSheet.create({
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
   },
-  active: { color: "#0084ff" },
+  active: {
+    color: "#0084ff",
+    textDecorationLine: "underline",
+  },
   text: {
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: "bold",
   },
 });

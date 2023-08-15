@@ -5,22 +5,10 @@ import Header from "./components/Header/Header";
 import TaskCard from "./components/TaskCard/TaskCard";
 import { useState } from "react";
 import Tab from "./components/Tab/Tab";
-
-const TODO_LIST = [
-  { id: 1, title: "aller faire les courses", isCompleted: false },
-  { id: 2, title: "aller a la pharmacie", isCompleted: true },
-  { id: 3, title: "faire de sport ", isCompleted: true },
-  { id: 4, title: "envoyé des CV", isCompleted: false },
-  { id: 5, title: "coder pandans 2 heures", isCompleted: true },
-  { id: 6, title: "aller faire les courses", isCompleted: false },
-  { id: 7, title: "aller a la pharmacie", isCompleted: true },
-  { id: 8, title: "faire de sport ", isCompleted: true },
-  { id: 9, title: "envoyé des CV", isCompleted: false },
-  { id: 10, title: "coder pandans 2 heures", isCompleted: true },
-];
+import AddTask from "./components/AddTask/AddTask";
 
 export default function App() {
-  const [todoList, setTodoList] = useState(TODO_LIST);
+  const [todoList, setTodoList] = useState([]);
   const [activeTab, setActiveTab] = useState("inProgress");
 
   function deleteTodo(task) {
@@ -87,6 +75,7 @@ export default function App() {
           <View style={s.body}>
             <ScrollView style={{}}>{renderTodoList()}</ScrollView>
           </View>
+          <AddTask style={s.btnAdd} />
         </SafeAreaView>
       </SafeAreaProvider>
       <View style={s.footer}>
